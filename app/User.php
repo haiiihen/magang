@@ -47,4 +47,14 @@ class User extends Authenticatable
     public function hasAnyRole($role){
         return null !== $this->roles()->where('name', $role)->first();
     }
+
+    public function user()
+    {
+        if(!$this->avatar){
+            return asset('images/white.jpg');
+        }
+
+        return asset('images/'.$this->avatar);
+    }
+
 }

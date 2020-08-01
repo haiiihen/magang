@@ -3,18 +3,18 @@
 @section('content')
 <div id="wrapper">
     <div class="main">
-        <div class="main-content-center">
+        <div class="main-content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="div col-md-8">
                         <!-- INPUTS -->
                         <div class="panel">
-                            <div class="panel-heading">
-                                <h3 class="name">{{ $user->name}}</h3>
+                        <div style="text-align:center; font-size:30px;" class="panel-heading">
+                                <strong class="name">{{ $user->name}}</strong>
                             </div>
                             <div class="panel-body">
-                                <form action="{{ route('admin.users.update', ['user' => $user->id]) }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('users.users.update', ['user' => $user->id]) }}" method="POST" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="div col-md-9">
                                             @csrf

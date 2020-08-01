@@ -48,13 +48,13 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    { 
+    {
         // dd($request->all());
 
         // if(Auth::user()->id == $id){
         //     return redirect()->route('admin.users.index')->with('warning', 'You are not allowed to edit yourself');
         // }
-        
+
         $user = User::find($id);
         $user->update($request->all());
         $user->roles()->sync($request->roles);
@@ -64,10 +64,11 @@ class UserController extends Controller
         if ($request->hasFile('avatar')) {
             $request->file('avatar')->move('images', $request->file('avatar')->getClientOriginalName());
             $user->avatar = $request->file('avatar')->getClientOriginalName();
-            $user->save();
         }
 
-        return redirect()->route('users.users.index', ['user' => $id])->with('success', 'User has been updated');
+        $user->save();
+
+        return redirect()->route('users.profile')->with('sukses', 'User has been updated');
     }
 
     /**
@@ -80,7 +81,9 @@ class UserController extends Controller
     public function profile()
     {
         // echo 'gsgsgsg';
+
+        // dd(Auth::user());
+
         return view('User.profile')->with('user', Auth::user());
     }
-
 }

@@ -18,7 +18,7 @@
                 </li> -->
                 @endhasrole
                 @hasrole('user')
-                <li><a href="{{ route('users.profile') }}" class=""><i class="lnr lnr-user"></i><span>Profile</span></a></li>
+                <li><a href="/user/profile" class=""><i class="lnr lnr-user"></i><span>Profile</span></a></li>
                 <li><a href="{{ route('users.users.index') }}" class=""><i class="lnr lnr-users"></i><span>Daftar Anggota</span></a></li>
                 @endhasrole
                 @impersonate()

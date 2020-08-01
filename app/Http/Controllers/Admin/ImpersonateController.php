@@ -15,6 +15,7 @@ class ImpersonateController extends Controller
         if($user){
             session()->put('impersonate', $user->id);
         }
+
         return redirect('/home');
     }
     
